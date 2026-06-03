@@ -1,10 +1,8 @@
-# Nome do Projeto
+# P'a Comer
 
-> Breve descrição do projeto numa ou duas frases. O que faz a aplicação? Para quem?
+> P'a Comer é uma app de reservas de restaurantes. Com o intuito de ajudar o cliente a reservar mesa em restaurantes, cancelar a reserva e poder avaliar o mesmo.
 
-**Exemplo:** *Sistema de gestão de uma biblioteca pessoal que permite registar livros, autores e empréstimos.*
 
----
 
 ## Informação do Projeto
 
