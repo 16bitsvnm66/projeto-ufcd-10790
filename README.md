@@ -1,21 +1,19 @@
-# Nome do Projeto
+# P'a Comer
 
-> Breve descrição do projeto numa ou duas frases. O que faz a aplicação? Para quem?
+> P'a Comer é uma app de reservas de restaurantes. Com o intuito de ajudar o cliente a reservar mesa em restaurantes, cancelar a reserva e poder avaliar o mesmo.
 
-**Exemplo:** *Sistema de gestão de uma biblioteca pessoal que permite registar livros, autores e empréstimos.*
 
----
 
 ## Informação do Projeto
 
 | Campo            | Detalhe                              |
 |------------------|--------------------------------------|
 | **Curso**        | UFCD 10790 – Projeto de Programação  |
-| **Formando**     | [O teu nome completo]                |
-| **Formador**     | [Nome do formador]                   |
-| **Instituição**  | [Nome da instituição / empresa]      |
-| **Data de início** | [dd/mm/aaaa]                       |
-| **Data de entrega** | [dd/mm/aaaa]                      |
+| **Formando**     | Flávio Tavares Saldanha              |
+| **Formador**     | Carlos Barata                        |
+| **Instituição**  | IEFP                                 |
+| **Data de início** | 01/06/2026                         |
+| **Data de entrega** | 19/06/2026                        |
 | **Versão**       | 1.0                                  |
 
 ---
