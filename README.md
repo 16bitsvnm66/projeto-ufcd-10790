@@ -1,6 +1,6 @@
 # P'a Comer
 
-> P'a Comer é uma app de reservas de restaurantes. Com o intuito de ajudar o cliente a reservar mesa em restaurantes, cancelar a reserva e poder avaliar o mesmo.
+> P'a Comer é uma app de reservas de restaurantes. Com o intuito de ajudar o cliente a reservar mesa em restaurantes, cancelar e poder avaliar o mesmo.
 
 
 
@@ -36,9 +36,9 @@
 
 Explica aqui o projeto com um pouco mais de detalhe do que na frase de abertura.
 
-- Qual o problema que resolve?
-- Quem são os utilizadores?
-- Qual a abordagem técnica (ex: aplicação de consola em Python com base de dados SQLite)?
+- Qual o problema que resolve? - O intuito é ajudar os clientes dos restaurantes a poderem antever a sua mesa antes de chagar ao próprio local sem necessidade de o fazer pessoalmente ou por chamada. Prático, fácil e todos ficam a ganhar.
+- Usuários da app; Admin
+- Aplicação de consola em Python 
 
 ---
 
