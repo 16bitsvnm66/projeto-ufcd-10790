@@ -91,3 +91,6 @@ def adicionar_reserva(reservas):
         print("\nReserva adicionada com sucesso!")
         print(f"Código da reserva: {reserva['codigo']}")
         print(f"Mesa atribuída: {reserva['mesa']}")
+
+def listar_reservas(reservas):
+    
