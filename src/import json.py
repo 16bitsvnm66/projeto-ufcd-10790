@@ -36,3 +36,33 @@ def calcular_dias_para_reserva(data):
 
     return (data_reserva - hoje).days
 
+def criar_reserva(reservas):
+    nome = input("Nome do cliente: ")
+
+    while True: 
+        data = input("Data da reserva (dd-mm-aaaa): ")
+
+        try:
+            data_reserva = datetime.strptime(data, "%d-%m-%Y").date()
+            hoje = datetime.now().date()
+
+            if data_reserva < hoje:
+                print("A data da reserva não pode ser no passado. Tente novamente.")
+                continue
+            break
+        except ValueError:
+            print("Formato de data inválido. Use dd-mm-aaaa. Tente novamente.")
+    
+    hora = input("Hora da reserva (hh:mm): ")
+    pessoas = int(input("Número de pessoas: "))
+    mesa = atribuir_mesas(reservas, data, hora)
+
+    if mesa is None:
+        print("Desculpe, não há mesas disponíveis para essa data e hora.")
+        return
+    
+    
+
+
+
+
