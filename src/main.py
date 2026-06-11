@@ -123,5 +123,22 @@ def pesquisar_reserva(reservas):
     for reserva in econtradas:
         print(f"Código: {reserva['codigo']}, Nome: {reserva['nome']}, Data: {reserva['data']}, Hora: {reserva['hora']}, Pessoas: {reserva['pessoas']}, Mesa: {reserva['mesa']}")
 
+def cancelar_reserva(reservas):
+    if not reservas:
+        print("\Nenhuma reserva encontrada.")
+        return
+    
+    codigo = input("\nDigite o código da reserva que deseja cancelar: ").upper()
+
+    for reserva in reservas:
+        if reserva["codigo"] == codigo:
+            reservas.remove(reserva)
+            guardar_reservas(reservas)
+            print(f"\nReserva {codigo} cancelada com sucesso!")
+            
+            return
+        
+    print("\nNenhuma reserva encontrada com esse código.")
+    
 
 
