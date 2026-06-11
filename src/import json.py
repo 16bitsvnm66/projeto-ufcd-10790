@@ -61,7 +61,24 @@ def criar_reserva(reservas):
         print("Desculpe, não há mesas disponíveis para essa data e hora.")
         return
     
-    
+    codigo_reserva = gerar_codigo_reserva(reservas)
+
+    dias_faltam = (data_reserva - hoje).days
+
+    if dias_faltam == 0:
+        print("A reserva é para hoje! Por favor, chegue com antecedência.")
+    else:
+        print(f"Faltam {dias_faltam} dias para a reserva.")
+
+    return {
+        "codigo": codigo_reserva,
+        "nome": nome,
+        "data": data,
+        "hora": hora,
+        "pessoas": pessoas,
+        "mesa": mesa
+    }
+
 
 
 
