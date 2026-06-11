@@ -18,3 +18,21 @@ def guardar_reservas(reservas):
 def gerar_codigo_reserva(reservas):
     numero = len(reservas) + 1
     return f"R{numero:04d}"
+
+def atribuir_mesas(reservas, data, hora):
+    mesas_ocupadas = []
+    
+    for reserva in reservas:
+        if reserva["data"] == data and reserva["hora"] == hora:
+            mesas_ocupadas.append(reserva["mesa"])
+    for mesa in Mesas:
+        if mesa not in mesas_ocupadas:
+            return mesa
+    return None
+
+def calcular_dias_para_reserva(data):
+    data_reserva = datetime.strptime(data, "%d-%m-%Y").date()
+    hoje = datetime.now().date()
+
+    return (data_reserva - hoje).days
+
