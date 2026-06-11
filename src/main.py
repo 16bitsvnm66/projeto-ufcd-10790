@@ -93,4 +93,35 @@ def adicionar_reserva(reservas):
         print(f"Mesa atribuída: {reserva['mesa']}")
 
 def listar_reservas(reservas):
+    if not reservas:
+        print("\nNenhuma reserva encontrada.")
+        return
     
+    print("\n======== LISTA DE RESERVAS ========")
+
+    for indice, reserva in enumerate(reservas, start=1):
+        print(f"{indice}. Código: {reserva['codigo']}, Nome: {reserva['nome']}, Data: {reserva['data']}, Hora: {reserva['hora']}, Pessoas: {reserva['pessoas']}, Mesa: {reserva['mesa']}")
+
+def pesquisar_reserva(reservas):
+    if not reservas:
+        print("\nNenhuma reserva encontrada.")
+        return
+    
+    pesquisa = input("\nDigite o seu nome ou código de reserva: ").lower()
+    econtradas = []
+
+    for reserva in reservas:
+        if pesquisa in reserva["nome"].lower() or pesquisa == reserva["codigo"].lower():
+            econtradas.append(reserva)
+    
+    if not econtradas:
+        print("\nNenhuma reserva encontrada com esse nome ou código.")
+        return
+    
+    print("\n======== RESERVAS ENCONTRADAS ========")
+
+    for reserva in econtradas:
+        print(f"Código: {reserva['codigo']}, Nome: {reserva['nome']}, Data: {reserva['data']}, Hora: {reserva['hora']}, Pessoas: {reserva['pessoas']}, Mesa: {reserva['mesa']}")
+
+
+
