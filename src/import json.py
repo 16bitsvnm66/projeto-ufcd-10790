@@ -11,3 +11,10 @@ def carregar_reservas():
             return json.load(f)
     return []
 
+def guardar_reservas(reservas):
+    with open(FICHEIRO_RESERVAS, "w", enconding="utf-8") as f:
+        json.dump(reservas, f, indent=4)
+
+def gerar_codigo_reserva(reservas):
+    numero = len(reservas) + 1
+    return f"R{numero:04d}"
