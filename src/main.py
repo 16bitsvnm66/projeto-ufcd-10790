@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 FICHEIRO_RESERVAS = "reservas.json"
-Mesas = [1, 2, 3, 4, 5, 6, 7, 8]
+MESAS = [1, 2, 3, 4, 5, 6, 7, 8]
 
 def carregar_reservas():
     if os.path.exists(FICHEIRO_RESERVAS):
@@ -139,6 +139,16 @@ def cancelar_reserva(reservas):
             return
         
     print("\nNenhuma reserva encontrada com esse código.")
-    
+
+def mostrar_menu():
+    print("\n======== SISTEMA DE RESERVAS ========")
+    print("1. Adicionar reserva")
+    print("2. Listar reservas")
+    print("3. Pesquisar reserva")
+    print("4. Cancelar reserva")
+    print("5. Sair")
+
+
+
 
 
