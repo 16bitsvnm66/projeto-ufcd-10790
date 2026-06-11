@@ -58,7 +58,7 @@ def criar_reserva(reservas):
     mesa = atribuir_mesas(reservas, data, hora)
 
     if mesa is None:
-        print("Desculpe, não há mesas disponíveis para essa data e hora.")
+        print("\nDesculpe, não há mesas disponíveis para essa data e hora.")
         return
     
     codigo_reserva = gerar_codigo_reserva(reservas)
@@ -81,5 +81,15 @@ def criar_reserva(reservas):
 
 
 
+def adicionar_reserva(reservas):
+    reserva = criar_reserva(reservas)
+
+    if reserva is not None:
+        reservas.append(reserva)
+        guardar_reservas(reservas)
+
+        print("\nReserva adicionada com sucesso!")
+        print(f"Código da reserva: {reserva['codigo']}")
+        print(f"Mesa atribuída: {reserva['mesa']}")
 
 
