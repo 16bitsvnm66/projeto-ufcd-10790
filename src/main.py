@@ -72,8 +72,8 @@ def mostrar_restaurantes():
     print("\n======== RESTAURANTES DISPONÍVEIS ========")
     print(f"  {'ID':<4} {'NOME':<26} {'COZINHA':<14} {'CIDADE'}")
     print("  " + "─" * 58)
+    
     for r in RESTAURANTES:
-        # Calcula a média de avaliação para mostrar ao lado
         if r["num_avaliacoes"] > 0:
             media = r["avaliacao_total"] / r["num_avaliacoes"]
             estrelas = f"  ★ {media:.1f}"
@@ -81,6 +81,19 @@ def mostrar_restaurantes():
             estrelas = "  (sem avaliações)"
         print(f"  [{r['id']}]  {r['nome']:<26} {r['cozinha']:<14} {r['cidade']}{estrelas}")
 
+def escolher_restaurante():
+    mostrar_restaurantes()
+    print()
+ 
+    while True:
+        try:
+            escolha = int(input("  Escolha o número do restaurante: "))
+            restaurante = obter_restaurante(escolha)
+            if restaurante:
+                return restaurante
+            print("  Número inválido. Tente novamente.")
+        except ValueError:
+            print("  Introduza um número válido.")
 
 
 def gerar_codigo_reserva(reservas):
