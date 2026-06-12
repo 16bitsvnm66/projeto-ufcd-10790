@@ -4,6 +4,54 @@ from datetime import datetime
 
 FICHEIRO_RESERVAS = "reservas.json"
 MESAS = [1, 2, 3, 4, 5, 6, 7, 8]
+RESTAURANTES = [
+    {
+        "id": 1,
+        "nome": "Tasca do Zé",
+        "cozinha": "Portuguesa",
+        "cidade": "Lisboa",
+        "morada": "Rua das Flores, 12",
+        "avaliacao_total": 0,
+        "num_avaliacoes": 0
+    },
+    {
+        "id": 2,
+        "nome": "Marisqueira Atlântico",
+        "cozinha": "Mariscos",
+        "cidade": "Cascais",
+        "morada": "Av. Marginal, 88",
+        "avaliacao_total": 0,
+        "num_avaliacoes": 0
+    },
+    {
+        "id": 3,
+        "nome": "Sushi Nagoya",
+        "cozinha": "Japonesa",
+        "cidade": "Lisboa",
+        "morada": "Rua do Carmo, 45",
+        "avaliacao_total": 0,
+        "num_avaliacoes": 0
+    },
+    {
+        "id": 4,
+        "nome": "La Piazza",
+        "cozinha": "Italiana",
+        "cidade": "Porto",
+        "morada": "Rua Augusta, 201",
+        "avaliacao_total": 0,
+        "num_avaliacoes": 0
+    },
+    {
+        "id": 5,
+        "nome": "Adega Alentejana",
+        "cozinha": "Alentejana",
+        "cidade": "Évora",
+        "morada": "Praça do Comércio, 3",
+        "avaliacao_total": 0,
+        "num_avaliacoes": 0
+    },
+]
+
 
 def carregar_reservas():
     if os.path.exists(FICHEIRO_RESERVAS):
