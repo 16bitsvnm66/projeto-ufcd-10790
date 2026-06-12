@@ -63,7 +63,7 @@ def carregar_reservas():
     return []
 
 def guardar_reservas(reservas):
-    with open(FICHEIRO_RESERVAS, "w", enconding="utf-8") as f:
+    with open(FICHEIRO_RESERVAS, "w", encoding="utf-8") as f:
         json.dump(reservas, f, indent=4)
 
 #--------------------------------------------------
@@ -124,7 +124,7 @@ def avaliar_restaurante(reservas):
         print(f"\nJá avaliou este restaurante com {reserva_encontrada['avaliacao']} estrelas.")
         return
  
-    nome_restaurante = reserva_encontrada["restaurante"]
+    nome_restaurante = reserva_encontrada.get("restaurante")
     print(f"\nAvaliar: {nome_restaurante}")
  
     while True:
@@ -167,7 +167,7 @@ def atribuir_mesas(reservas, data, hora, restaurante_id):
     for reserva in reservas:
         if reserva["data"] == data and reserva["hora"] == hora and reserva["restaurante_id"] == restaurante_id:
             mesas_ocupadas.append(reserva["mesa"])
-    for mesa in Mesas:
+    for mesa in MESAS:
         if mesa not in mesas_ocupadas:
             return mesa
     return None
@@ -224,6 +224,7 @@ def criar_reserva(reservas):
         "pessoas": pessoas,
         "mesa": mesa,
         "restaurante_id": restaurante["id"],
+        "restaurante": restaurante["nome"],
         "avaliacao": None
 
     }
@@ -251,7 +252,7 @@ def listar_reservas(reservas):
     for indice, reserva in enumerate(reservas, start=1):
         avaliacao = f" ★ {reserva['avaliacao']}" if reserva.get("avaliacao") else ""
         print(f"{indice}. [{reserva['codigo']}] {reserva['nome']} — "
-              f"{reserva['restaurante']} | {reserva['data']} {reserva['hora']} | "
+              f"{reserva.get('restaurante', 'N/A')} | {reserva['data']} {reserva['hora']} | "
               f"Mesa {reserva['mesa']} | {reserva['pessoas']} pax{avaliacao}")
 
 
@@ -281,7 +282,7 @@ def pesquisar_reserva(reservas):
 
 def cancelar_reserva(reservas):
     if not reservas:
-        print("\Nenhuma reserva encontrada.")
+        print("\nNenhuma reserva encontrada.")
         return
     
     codigo = input("\nDigite o código da reserva que deseja cancelar: ").upper()
@@ -300,7 +301,7 @@ def cancelar_reserva(reservas):
 #                    MENU
 #--------------------------------------------------
 def mostrar_menu():
-    print("\n======== SISTEMA DE RESERVAS ========")
+    print("\n======== P'a Comer ========")
     print("1. Adicionar reserva")
     print("2. Listar reservas")
     print("3. Pesquisar reserva")
@@ -309,6 +310,33 @@ def mostrar_menu():
     print("6. Avaliar restaurante")
     print("0. Sair")
 
+def main():
+    reservas = carregar_reservas()
+
+    while True:
+        mostrar_menu()
+        escolha = input("\nEscolha uma opção: ")
+
+        if escolha == "1":
+            adicionar_reserva(reservas)
+        elif escolha == "2":
+            listar_reservas(reservas)
+        elif escolha == "3":
+            pesquisar_reserva(reservas)
+        elif escolha == "4":
+            cancelar_reserva(reservas)
+        elif escolha == "5":
+            mostrar_restaurantes()
+        elif escolha == "6":
+            avaliar_restaurante(reservas)
+        elif escolha == "0":
+            print("\nObrigado por usar o \"P'a Comer\". Até breve!")
+            break
+        else:
+            print("\nOpção inválida. Tente novamente.")
+
+if __name__ == "__main__":
+    main()
 
 
 

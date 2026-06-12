@@ -1,0 +1,12 @@
+[
+    {
+        "codigo": "R0001",
+        "nome": "Fl\u00e1vio",
+        "data": "12-06-2026",
+        "hora": "14:00",
+        "pessoas": 4,
+        "mesa": 1,
+        "restaurante_id": 1,
+        "avaliacao": 4
+    }
+]
