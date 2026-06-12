@@ -63,15 +63,35 @@ def guardar_reservas(reservas):
     with open(FICHEIRO_RESERVAS, "w", enconding="utf-8") as f:
         json.dump(reservas, f, indent=4)
 
+def obter_restaurante(restaurante_id):
+    for restaurante in RESTAURANTES:
+        if restaurante["id"] == restaurante_id:
+            return restaurante
+ 
+def mostrar_restaurantes():
+    print("\n======== RESTAURANTES DISPONÍVEIS ========")
+    print(f"  {'ID':<4} {'NOME':<26} {'COZINHA':<14} {'CIDADE'}")
+    print("  " + "─" * 58)
+    for r in RESTAURANTES:
+        # Calcula a média de avaliação para mostrar ao lado
+        if r["num_avaliacoes"] > 0:
+            media = r["avaliacao_total"] / r["num_avaliacoes"]
+            estrelas = f"  ★ {media:.1f}"
+        else:
+            estrelas = "  (sem avaliações)"
+        print(f"  [{r['id']}]  {r['nome']:<26} {r['cozinha']:<14} {r['cidade']}{estrelas}")
+
+
+
 def gerar_codigo_reserva(reservas):
     numero = len(reservas) + 1
     return f"R{numero:04d}"
 
-def atribuir_mesas(reservas, data, hora):
+def atribuir_mesas(reservas, data, hora, restaurante_id):
     mesas_ocupadas = []
     
     for reserva in reservas:
-        if reserva["data"] == data and reserva["hora"] == hora:
+        if reserva["data"] == data and reserva["hora"] == hora and reserva["restaurante_id"] == restaurante_id:
             mesas_ocupadas.append(reserva["mesa"])
     for mesa in Mesas:
         if mesa not in mesas_ocupadas:
@@ -85,6 +105,10 @@ def calcular_dias_para_reserva(data):
     return (data_reserva - hoje).days
 
 def criar_reserva(reservas):
+    print("\n======== CRIAR RESERVA ========")
+    restaurante = escolher_restaurante()
+    print(f"\nRestaurante escolhido: {restaurante['nome']} - {restaurante['morada']}, {restaurante['cidade']}")
+    
     nome = input("Nome do cliente: ")
 
     while True: 
@@ -124,7 +148,10 @@ def criar_reserva(reservas):
         "data": data,
         "hora": hora,
         "pessoas": pessoas,
-        "mesa": mesa
+        "mesa": mesa,
+        "restaurante_id": restaurante["id"],
+        "avaliacao": None
+
     }
 
 
