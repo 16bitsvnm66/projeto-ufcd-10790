@@ -4,6 +4,7 @@ from datetime import datetime
 
 FICHEIRO_RESERVAS = "reservas.json"
 MESAS = [1, 2, 3, 4, 5, 6, 7, 8]
+
 RESTAURANTES = [
     {
         "id": 1,
@@ -51,7 +52,9 @@ RESTAURANTES = [
         "num_avaliacoes": 0
     },
 ]
-
+# --------------------------------------------------
+#                 PERSISTÊNCIA
+# --------------------------------------------------
 
 def carregar_reservas():
     if os.path.exists(FICHEIRO_RESERVAS):
@@ -62,6 +65,10 @@ def carregar_reservas():
 def guardar_reservas(reservas):
     with open(FICHEIRO_RESERVAS, "w", enconding="utf-8") as f:
         json.dump(reservas, f, indent=4)
+
+#--------------------------------------------------
+#               RESTAURANTES
+# --------------------------------------------------
 
 def obter_restaurante(restaurante_id):
     for restaurante in RESTAURANTES:
@@ -94,6 +101,60 @@ def escolher_restaurante():
             print("  Número inválido. Tente novamente.")
         except ValueError:
             print("  Introduza um número válido.")
+
+def avaliar_restaurante(reservas):
+   
+    if not reservas:
+        print("\nNão existem reservas. Faça uma reserva primeiro.")
+        return
+ 
+    codigo = input("\nDigite o código da reserva para avaliar: ").upper()
+ 
+    reserva_encontrada = None
+    for reserva in reservas:
+        if reserva["codigo"] == codigo:
+            reserva_encontrada = reserva
+            break
+ 
+    if reserva_encontrada is None:
+        print("Nenhuma reserva encontrada com esse código.")
+        return
+ 
+    if reserva_encontrada.get("avaliacao"):
+        print(f"\nJá avaliou este restaurante com {reserva_encontrada['avaliacao']} estrelas.")
+        return
+ 
+    nome_restaurante = reserva_encontrada["restaurante"]
+    print(f"\nAvaliar: {nome_restaurante}")
+ 
+    while True:
+        try:
+            nota = int(input("Nota de 1 a 5 estrelas: "))
+            if 1 <= nota <= 5:
+                break
+            print("Introduza um número entre 1 e 5.")
+        except ValueError:
+            print("Introduza um número válido.")
+ 
+   
+    reserva_encontrada["avaliacao"] = nota
+ 
+
+    for r in RESTAURANTES:
+        if r["nome"] == nome_restaurante:
+            r["avaliacao_total"] += nota
+            r["num_avaliacoes"] += 1
+            media = r["avaliacao_total"] / r["num_avaliacoes"]
+            print(f"\n✓ Avaliação registada! {'★' * nota}{'☆' * (5 - nota)}")
+            print(f"  Média atual de {nome_restaurante}: {media:.1f} estrelas")
+            break
+ 
+    guardar_reservas(reservas)
+
+#--------------------------------------------------
+#                  RESERVAS
+#--------------------------------------------------
+
 
 
 def gerar_codigo_reserva(reservas):
@@ -140,7 +201,7 @@ def criar_reserva(reservas):
     
     hora = input("Hora da reserva (hh:mm): ")
     pessoas = int(input("Número de pessoas: "))
-    mesa = atribuir_mesas(reservas, data, hora)
+    mesa = atribuir_mesas(reservas, data, hora, restaurante["id"])
 
     if mesa is None:
         print("\nDesculpe, não há mesas disponíveis para essa data e hora.")
@@ -188,7 +249,11 @@ def listar_reservas(reservas):
     print("\n======== LISTA DE RESERVAS ========")
 
     for indice, reserva in enumerate(reservas, start=1):
-        print(f"{indice}. Código: {reserva['codigo']}, Nome: {reserva['nome']}, Data: {reserva['data']}, Hora: {reserva['hora']}, Pessoas: {reserva['pessoas']}, Mesa: {reserva['mesa']}")
+        avaliacao = f" ★ {reserva['avaliacao']}" if reserva.get("avaliacao") else ""
+        print(f"{indice}. [{reserva['codigo']}] {reserva['nome']} — "
+              f"{reserva['restaurante']} | {reserva['data']} {reserva['hora']} | "
+              f"Mesa {reserva['mesa']} | {reserva['pessoas']} pax{avaliacao}")
+
 
 def pesquisar_reserva(reservas):
     if not reservas:
@@ -209,7 +274,10 @@ def pesquisar_reserva(reservas):
     print("\n======== RESERVAS ENCONTRADAS ========")
 
     for reserva in econtradas:
-        print(f"Código: {reserva['codigo']}, Nome: {reserva['nome']}, Data: {reserva['data']}, Hora: {reserva['hora']}, Pessoas: {reserva['pessoas']}, Mesa: {reserva['mesa']}")
+        print(f"Código: {reserva['codigo']}, Nome: {reserva['nome']}, "
+              f"Restaurante: {reserva['restaurante']}, Data: {reserva['data']}, "
+              f"Hora: {reserva['hora']}, Pessoas: {reserva['pessoas']}, Mesa: {reserva['mesa']}")
+
 
 def cancelar_reserva(reservas):
     if not reservas:
@@ -228,13 +296,20 @@ def cancelar_reserva(reservas):
         
     print("\nNenhuma reserva encontrada com esse código.")
 
+#--------------------------------------------------
+#                    MENU
+#--------------------------------------------------
 def mostrar_menu():
     print("\n======== SISTEMA DE RESERVAS ========")
     print("1. Adicionar reserva")
     print("2. Listar reservas")
     print("3. Pesquisar reserva")
     print("4. Cancelar reserva")
-    print("5. Sair")
+    print("5. Ver restaurantes")
+    print("6. Avaliar restaurante")
+    print("0. Sair")
+
+
 
 
 
