@@ -64,7 +64,7 @@ def carregar_reservas():
 
 def guardar_reservas(reservas):
     with open(FICHEIRO_RESERVAS, "w", encoding="utf-8") as f:
-        json.dump(reservas, f, indent=4)
+        json.dump(reservas, f, indent=4, ensure_ascii=False)
 
 #--------------------------------------------------
 #               RESTAURANTES
@@ -72,8 +72,9 @@ def guardar_reservas(reservas):
 
 def obter_restaurante(restaurante_id):
     for restaurante in RESTAURANTES:
-        if restaurante["id"] == restaurante_id:
+        if restaurante["id"] == int(restaurante_id):
             return restaurante
+    return None
  
 def mostrar_restaurantes():
     print("\n======== RESTAURANTES DISPONÍVEIS ========")
@@ -165,7 +166,8 @@ def atribuir_mesas(reservas, data, hora, restaurante_id):
     mesas_ocupadas = []
     
     for reserva in reservas:
-        if reserva["data"] == data and reserva["hora"] == hora and reserva["restaurante_id"] == restaurante_id:
+        rid = reserva.get("restaurante_id")
+        if(reserva["data"] == data and reserva["hora"] == hora and int(rid) == int(restaurante_id)):
             mesas_ocupadas.append(reserva["mesa"])
     for mesa in MESAS:
         if mesa not in mesas_ocupadas:
@@ -182,16 +184,18 @@ def criar_reserva(reservas):
     print("\n======== CRIAR RESERVA ========")
     restaurante = escolher_restaurante()
     print(f"\nRestaurante escolhido: {restaurante['nome']} - {restaurante['morada']}, {restaurante['cidade']}")
-    
+   
     nome = input("Nome do cliente: ")
 
+    hoje = datetime.now().date()
+
     while True: 
+
         data = input("Data da reserva (dd-mm-aaaa): ")
 
         try:
             data_reserva = datetime.strptime(data, "%d-%m-%Y").date()
-            hoje = datetime.now().date()
-
+            
             if data_reserva < hoje:
                 print("A data da reserva não pode ser no passado. Tente novamente.")
                 continue
@@ -200,7 +204,17 @@ def criar_reserva(reservas):
             print("Formato de data inválido. Use dd-mm-aaaa. Tente novamente.")
     
     hora = input("Hora da reserva (hh:mm): ")
-    pessoas = int(input("Número de pessoas: "))
+
+    while True:
+      try:
+        pessoas = int(input("Número de pessoas: "))
+        if pessoas > 0:
+            break
+        print("Introduza um número maior que 0.")
+      except ValueError:
+        print("Introduza um número válido.")
+
+  
     mesa = atribuir_mesas(reservas, data, hora, restaurante["id"])
 
     if mesa is None:
@@ -262,19 +276,19 @@ def pesquisar_reserva(reservas):
         return
     
     pesquisa = input("\nDigite o seu nome ou código de reserva: ").lower()
-    econtradas = []
+    encontradas = []
 
     for reserva in reservas:
         if pesquisa in reserva["nome"].lower() or pesquisa == reserva["codigo"].lower():
-            econtradas.append(reserva)
+            encontradas.append(reserva)
     
-    if not econtradas:
+    if not encontradas:
         print("\nNenhuma reserva encontrada com esse nome ou código.")
         return
     
     print("\n======== RESERVAS ENCONTRADAS ========")
 
-    for reserva in econtradas:
+    for reserva in encontradas:
         print(f"Código: {reserva['codigo']}, Nome: {reserva['nome']}, "
               f"Restaurante: {reserva['restaurante']}, Data: {reserva['data']}, "
               f"Hora: {reserva['hora']}, Pessoas: {reserva['pessoas']}, Mesa: {reserva['mesa']}")

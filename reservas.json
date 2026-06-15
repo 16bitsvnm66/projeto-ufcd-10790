@@ -1,0 +1,13 @@
+[
+    {
+        "codigo": "R0001",
+        "nome": "Flavio",
+        "data": "26-07-2026",
+        "hora": "14:00",
+        "pessoas": 4,
+        "mesa": 1,
+        "restaurante_id": 1,
+        "restaurante": "Tasca do Zé",
+        "avaliacao": null
+    }
+]
