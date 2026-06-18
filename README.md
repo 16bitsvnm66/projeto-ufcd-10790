@@ -1,20 +1,18 @@
 # P'a Comer
 
-> P'a Comer é uma app de reservas de restaurantes. Com o intuito de ajudar o cliente a reservar mesa em restaurantes, cancelar e poder avaliar o mesmo.
-
-
+> P'a Comer é uma aplicação de reservas em restaurantes. Permite ao cliente reservar uma mesa, consultar, cancelar e avaliar o restaurante — tudo a partir do terminal, sem necessidade de deslocação ou chamada.
 
 ## Informação do Projeto
 
-| Campo            | Detalhe                              |
-|------------------|--------------------------------------|
-| **Curso**        | UFCD 10790 – Projeto de Programação  |
-| **Formando**     | Flávio Tavares Saldanha              |
-| **Formador**     | Carlos Barata                        |
-| **Instituição**  | IEFP                                 |
-| **Data de início** | 01/06/2026                         |
-| **Data de entrega** | 19/06/2026                        |
-| **Versão**       | 1.0                                  |
+| Campo               | Detalhe                             |
+| ------------------- | ----------------------------------- |
+| **Curso**           | UFCD 10790 – Projeto de Programação |
+| **Formando**        | Flávio Tavares Saldanha             |
+| **Formador**        | Carlos Barata                       |
+| **Instituição**     | IEFP                                |
+| **Data de início**  | 01/06/2026                          |
+| **Data de entrega** | 19/06/2026                          |
+| **Versão**          | 1.0                                 |
 
 ---
 
@@ -25,7 +23,7 @@
 - [Estrutura do Repositório](#estrutura-do-repositório)
 - [Requisitos Técnicos](#requisitos-técnicos)
 - [Como Instalar e Executar](#como-instalar-e-executar)
-- [Base de Dados](#base-de-dados)
+- [Dados](#dados)
 - [Arquitetura](#arquitetura)
 - [Documentação](#documentação)
 - [Estado do Projeto](#estado-do-projeto)
@@ -34,61 +32,47 @@
 
 ## Descrição
 
-Explica aqui o projeto com um pouco mais de detalhe do que na frase de abertura.
+**P'a Comer** é uma aplicação de consola desenvolvida em Python que simula uma plataforma de reservas em restaurantes.
 
-- Qual o problema que resolve? - O intuito é ajudar os clientes dos restaurantes a poderem antever a sua mesa antes de chagar ao próprio local sem necessidade de o fazer pessoalmente ou por chamada. Prático, fácil e todos ficam a ganhar.
-- Usuários da app; Admin
-- Aplicação de consola em Python 
+- **Problema que resolve:** Permite ao cliente reservar uma mesa antecipadamente, sem necessidade de se deslocar ao restaurante ou fazer uma chamada. Prático, rápido e acessível.
+- **Utilizadores:** Cliente final (via terminal)
+- **Tecnologia:** Python puro — sem frameworks ou bibliotecas externas
+- **Persistência:** Ficheiro `reservas.json` criado automaticamente na primeira execução
 
 ---
 
 ## Funcionalidades
 
-Lista as principais funcionalidades implementadas:
-
-- [ ] Funcionalidade 1 — ex: Registo de utilizador
-- [ ] Funcionalidade 2 — ex: Login com autenticação
-- [ ] Funcionalidade 3 — ex: Listagem de produtos
-- [ ] Funcionalidade 4 — ex: ...
-
-> As checkboxes ficam marcadas (`[x]`) à medida que implementas cada funcionalidade.
+- [x] Funcionalidade 1 — Adicionar reserva com código único gerado automaticamente
+- [x] Funcionalidade 2 — Listar todas as reservas existentes
+- [x] Funcionalidade 3 — Pesquisar reserva por nome ou código
+- [x] Funcionalidade 4 — Cancelar reserva pelo código
+- [x] Funcionalidade 5 — Ver lista de restaurantes disponíveis com avaliação média
+- [x] Funcionalidade 6 — Avaliar restaurante com nota de 1 a 5 estrelas
+- [x] Funcionalidade 7 — Atribuição automática de mesa por disponibilidade
 
 ---
 
 ## Estrutura do Repositório
 
 ```
-projeto_ufcd10790/
+projeto-ufcd-10790/
 │
-├── README.md               ← Este ficheiro — apresentação do projeto
-├── .gitignore              ← Ficheiros a ignorar pelo Git
+├── README.md                   ← Este ficheiro — apresentação do projeto
+├── .gitignore                  ← Ficheiros a ignorar pelo Git
+├── reservas.json               ← Dados das reservas (gerado automaticamente)
 │
-├── src/                    ← Código fonte Python
-│   ├── main.py             ← Ponto de entrada da aplicação
-│   ├── dal/                ← Data Access Layer
-│   │   └── ...
-│   ├── bll/                ← Business Logic Layer
-│   │   └── ...
-│   └── ui/                 ← Interface com o utilizador
-│       └── ...
+├── src/                        ← Código fonte Python
+│   └── main.py                 ← Ponto de entrada da aplicação (ficheiro único)
 │
-├── sql/                    ← Scripts SQL (opcional)
-│   ├── criar_tabelas.sql   ← DDL — criação do esquema
-│   └── dados_exemplo.sql   ← Dados iniciais de teste
+├── docs/                       ← Documentação do projeto
+│   ├── relatorio.pdf           ← Relatório final do projeto
+│   └── explicacao_codigo.docx  ← Explicação linha a linha do código
 │
-├── docs/                   ← Toda a documentação do projeto
-│   ├── relatorio.docx      ← Relatório final do projeto
-│   ├── requisitos.xlsx     ← Levantamento de requisitos (RF e RNF)
-│   ├── manual_utilizador.docx  ← Manual de utilização da aplicação
-│   └── manual_tecnico.docx     ← Manual de instalação e configuração
+├── assets/                     ← Recursos visuais e apresentação
+│   ├── apresentacao.pptx       ← Apresentação final
+│   └── gantt.xlsx              ← Diagrama de Gantt do projeto
 │
-├── assets/                 ← Recursos visuais e apresentação
-│   ├── apresentacao.pptx   ← Apresentação final
-│   ├── diagrama_arquitetura.png  ← Diagrama de arquitetura do sistema
-│   └── diagrama_bd.png          ← Diagrama da base de dados (se aplicável)
-│
-└── tests/                  ← Testes (opcional mas recomendado)
-    └── test_bll.py         ← Testes à camada de negócio
 ```
 
 ---
@@ -96,15 +80,13 @@ projeto_ufcd10790/
 ## Requisitos Técnicos
 
 - Python 3.10 ou superior
-- Bibliotecas necessárias (lista aqui as que usas):
-  - `sqlite3` — incluído no Python (não precisa de instalação)
-  - *(adiciona outras se necessário, ex: `bcrypt`, `tabulate`)*
+- Sem bibliotecas externas — apenas módulos nativos do Python:
+  - `json` — leitura e escrita do ficheiro de dados
+  - `os` — verificação da existência do ficheiro
+  - `datetime` — validação de datas e horas
+  - `random` + `string` — geração de códigos únicos de reserva
 
-Para instalar dependências externas (se houver):
-
-```bash
-pip install -r requirements.txt
-```
+Não é necessário instalar nada. Basta ter o Python instalado.
 
 ---
 
@@ -112,97 +94,109 @@ pip install -r requirements.txt
 
 ### 1. Clonar o repositório
 
-```bash
-git clone https://github.com/[teu-utilizador]/[nome-do-repositorio].git
-cd [nome-do-repositorio]
+```
+git clone https://github.com/16bitsvnm66/projeto-ufcd-10790.git
+cd projeto-ufcd-10790
 ```
 
-### 2. (Opcional) Criar ambiente virtual
+### 2. Executar a aplicação
 
-```bash
-python -m venv venv
-
-# Windows
-venv\Scripts\activate
-
-# macOS / Linux
-source venv/bin/activate
 ```
-
-### 3. Instalar dependências
-
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Executar a aplicação
-
-```bash
 cd src
 python main.py
 ```
 
+O ficheiro `reservas.json` é criado automaticamente na primeira reserva.
+
 ---
 
-## Base de Dados
+## Dados
 
-> Preenche esta secção se o projeto usa base de dados.
+- **Formato:** JSON (ficheiro local `reservas.json`)
+- **Criação:** Automática na primeira execução
+- **Estrutura de uma reserva:**
 
-- **Sistema:** SQLite (ficheiro local) / *outro se aplicável*
-- **Ficheiro:** `src/database.db` *(criado automaticamente na primeira execução)*
-- **Esquema:** ver [`sql/criar_tabelas.sql`](sql/criar_tabelas.sql)
-
-Para inicializar a base de dados manualmente a partir dos scripts SQL:
-
-```bash
-sqlite3 database.db < sql/criar_tabelas.sql
-sqlite3 database.db < sql/dados_exemplo.sql
+```json
+{
+  "codigo": "R0001",
+  "nome": "Flávio Saldanha",
+  "data": "14-07-2026",
+  "hora": "20:00",
+  "pessoas": 4,
+  "mesa": 3,
+  "restaurante": "Tasca do Zé",
+  "restaurante_id": 1,
+  "avaliacao": null
+}
 ```
+
+### Restaurantes disponíveis
+
+| ID | Nome                  | Cozinha    | Cidade  |
+|----|-----------------------|------------|---------|
+| 1  | Tasca do Zé           | Portuguesa | Lisboa  |
+| 2  | Marisqueira Atlântico | Mariscos   | Cascais |
+| 3  | Sushi Nagoya          | Japonesa   | Lisboa  |
+| 4  | La Piazza             | Italiana   | Porto   |
+| 5  | Adega Alentejana      | Alentejana | Évora   |
 
 ---
 
 ## Arquitetura
 
-O projeto segue uma arquitetura em três camadas:
+O projeto é uma aplicação de camada única — todo o código está em `main.py`, organizado em funções com responsabilidades bem definidas:
 
 ```
-┌─────────────────────────────┐
-│     UI — Interface          │  Interação com o utilizador
-├─────────────────────────────┤
-│     BLL — Lógica de Negócio │  Regras e validações
-├─────────────────────────────┤
-│     DAL — Acesso a Dados    │  Queries e persistência
-├─────────────────────────────┤
-│     Base de Dados           │  SQLite / outro
-└─────────────────────────────┘
+┌─────────────────────────────────────┐
+│         UI — Menu Terminal          │  mostrar_menu(), main()
+├─────────────────────────────────────┤
+│      Lógica de Negócio              │  criar_reserva(), atribuir_mesas()
+│                                     │  avaliar_restaurante(), pesquisar_reserva()
+├─────────────────────────────────────┤
+│      Persistência de Dados          │  carregar_reservas(), guardar_reservas()
+├─────────────────────────────────────┤
+│      Ficheiro JSON                  │  reservas.json
+└─────────────────────────────────────┘
 ```
 
-O diagrama completo está em [`assets/diagrama_arquitetura.png`](assets/diagrama_arquitetura.png).
+### Fluxo de uma reserva
+
+```
+Utilizador
+    │
+    ▼
+escolher_restaurante()
+    │
+    ▼
+criar_reserva()  ──→  atribuir_mesas()  ──→  gerar_codigo_reserva()
+    │
+    ▼
+adicionar_reserva()  ──→  guardar_reservas()  ──→  reservas.json
+```
 
 ---
 
 ## Documentação
 
-| Documento                  | Localização                        | Descrição                              |
-|----------------------------|------------------------------------|----------------------------------------|
-| Relatório do Projeto       | `docs/relatorio.docx`              | Relatório completo do projeto          |
-| Levantamento de Requisitos | `docs/requisitos.xlsx`             | Requisitos funcionais e não funcionais |
-| Manual do Utilizador       | `docs/manual_utilizador.docx`      | Como usar a aplicação                  |
-| Manual Técnico             | `docs/manual_tecnico.docx`         | Instalação e configuração              |
-| Apresentação               | `assets/apresentacao.pptx`         | Slides da apresentação final           |
+| Documento             | Localização                    | Descrição                            |
+| --------------------- | ------------------------------ | ------------------------------------ |
+| Relatório do Projeto  | `docs/relatorio.pdf`           | Relatório completo do projeto        |
+| Explicação do Código  | `docs/explicacao_codigo.docx`  | Explicação linha a linha de cada função |
+| Apresentação          | `assets/apresentacao.pptx`     | Slides da apresentação final         |
+| Diagrama de Gantt     | `assets/gantt.xlsx`            | Planeamento e fases do projeto       |
 
 ---
 
 ## Estado do Projeto
 
 ```
-Sessão 1 — Requisitos        ✅ Concluído
-Sessão 2 — Arquitetura       ✅ Concluído
-Sessão 3 — Desenvolvimento 1 🔄 Em curso
-Sessão 4 — Desenvolvimento 2 ⏳ Pendente
-Sessão 5 — Apresentação      ⏳ Pendente
+Análise e Planeamento    ✅ Concluído
+Desenvolvimento          ✅ Concluído
+Testes e Correções       ✅ Concluído
+Documentação             ✅ Concluído
+Apresentação             ⏳ Pendente
 ```
 
 ---
 
-*UFCD 10790 – Projeto de Programação | [Ano letivo]*
+*UFCD 10790 – Projeto de Programação | 2026*
