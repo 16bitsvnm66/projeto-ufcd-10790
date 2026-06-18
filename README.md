@@ -46,10 +46,13 @@ Explica aqui o projeto com um pouco mais de detalhe do que na frase de abertura.
 
 Lista as principais funcionalidades implementadas:
 
-- [ ] Funcionalidade 1 — ex: Registo de utilizador
-- [ ] Funcionalidade 2 — ex: Login com autenticação
-- [ ] Funcionalidade 3 — ex: Listagem de produtos
-- [ ] Funcionalidade 4 — ex: ...
+ Funcionalidade 1 — Adicionar reserva com código único gerado automaticamente
+ Funcionalidade 2 — Listar todas as reservas existentes
+ Funcionalidade 3 — Pesquisar reserva por nome ou código
+ Funcionalidade 4 — Cancelar reserva pelo código
+ Funcionalidade 5 — Ver lista de restaurantes disponíveis com avaliação média
+ Funcionalidade 6 — Avaliar restaurante com nota de 1 a 5 estrelas
+ Funcionalidade 7 — Atribuição automática de mesa por disponibilidade
 
 > As checkboxes ficam marcadas (`[x]`) à medida que implementas cada funcionalidade.
 
@@ -58,37 +61,23 @@ Lista as principais funcionalidades implementadas:
 ## Estrutura do Repositório
 
 ```
-projeto_ufcd10790/
+projeto-ufcd-10790/
 │
-├── README.md               ← Este ficheiro — apresentação do projeto
-├── .gitignore              ← Ficheiros a ignorar pelo Git
+├── README.md                   ← Este ficheiro — apresentação do projeto
+├── .gitignore                  ← Ficheiros a ignorar pelo Git
+├── reservas.json               ← Dados das reservas (gerado automaticamente)
 │
-├── src/                    ← Código fonte Python
-│   ├── main.py             ← Ponto de entrada da aplicação
-│   ├── dal/                ← Data Access Layer
-│   │   └── ...
-│   ├── bll/                ← Business Logic Layer
-│   │   └── ...
-│   └── ui/                 ← Interface com o utilizador
-│       └── ...
+├── src/                        ← Código fonte Python
+│   └── main.py                 ← Ponto de entrada da aplicação (ficheiro único)
 │
-├── sql/                    ← Scripts SQL (opcional)
-│   ├── criar_tabelas.sql   ← DDL — criação do esquema
-│   └── dados_exemplo.sql   ← Dados iniciais de teste
+├── docs/                       ← Documentação do projeto
+│   ├── relatorio.pdf           ← Relatório final do projeto
+│   └── explicacao_codigo.docx  ← Explicação linha a linha do código
 │
-├── docs/                   ← Toda a documentação do projeto
-│   ├── relatorio.docx      ← Relatório final do projeto
-│   ├── requisitos.xlsx     ← Levantamento de requisitos (RF e RNF)
-│   ├── manual_utilizador.docx  ← Manual de utilização da aplicação
-│   └── manual_tecnico.docx     ← Manual de instalação e configuração
-│
-├── assets/                 ← Recursos visuais e apresentação
-│   ├── apresentacao.pptx   ← Apresentação final
-│   ├── diagrama_arquitetura.png  ← Diagrama de arquitetura do sistema
-│   └── diagrama_bd.png          ← Diagrama da base de dados (se aplicável)
-│
-└── tests/                  ← Testes (opcional mas recomendado)
-    └── test_bll.py         ← Testes à camada de negócio
+├── assets/                     ← Recursos visuais e apresentação
+│   ├── apresentacao.pptx       ← Apresentação final
+│   └── gantt.xlsx              ← Diagrama de Gantt do projeto
+
 ```
 
 ---
