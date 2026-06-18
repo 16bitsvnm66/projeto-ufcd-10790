@@ -6,13 +6,8 @@ Esta pasta contém toda a documentação escrita do projeto.
 
 | Ficheiro                  | Descrição                                              |
 |---------------------------|--------------------------------------------------------|
-| `relatorio.docx`          | Relatório final do projeto (entregável obrigatório)    |
-| `requisitos.xlsx`         | Levantamento de requisitos funcionais e não funcionais |
-| `manual_utilizador.docx`  | Manual de utilização da aplicação (para o utilizador final) |
-| `manual_tecnico.docx`     | Manual técnico: instalação, configuração e arquitetura |
-
-## Notas
-
-- Mantém os nomes de ficheiro em minúsculas e sem espaços (usa `_` em vez de espaço).
-- Atualiza os documentos à medida que o projeto evolui — não deixar para o fim.
-- O relatório deve referir os outros documentos e vice-versa.
+| `apresentação do projeto` |                  Ideia principal                       |
+| `Flavio Saldanha_cronograma`|                   Cronograma                         |
+| `P'a Comer.pptx`          |                 Apresentação em Slides                 |
+| `relatório.pdf`           |                   relatório do projecto                |
+| `Requisitos.xlsx`         |Levantamento de requisitos funcionais e não funcionais  |
