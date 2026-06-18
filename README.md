@@ -73,7 +73,6 @@ projeto-ufcd-10790/
 │   ├── apresentacao.pptx       ← Apresentação final
 │   └── gantt.xlsx              ← Diagrama de Gantt do projeto
 │
-└── tests/                      ← Testes (pasta reservada)
 ```
 
 ---
