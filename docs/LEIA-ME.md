@@ -9,5 +9,5 @@ Esta pasta contém toda a documentação escrita do projeto.
 | `apresentação do projeto` |                  Ideia principal                       |
 | `Flavio Saldanha_cronograma`|                   Cronograma                         |
 | `P'a Comer.pptx`          |                 Apresentação em Slides                 |
-| `relatório.pdf`           |                   relatório do projecto                |
-| `Requisitos.xlsx`         |Levantamento de requisitos funcionais e não funcionais  |
+| `relatório.pdf`           |                   Relatório do projecto                |
+| `Requisitos.xlsx`         | Levantamento de requisitos funcionais e não funcionais |
