@@ -46,13 +46,13 @@ Explica aqui o projeto com um pouco mais de detalhe do que na frase de abertura.
 
 Lista as principais funcionalidades implementadas:
 
- Funcionalidade 1 — Adicionar reserva com código único gerado automaticamente
- Funcionalidade 2 — Listar todas as reservas existentes
- Funcionalidade 3 — Pesquisar reserva por nome ou código
- Funcionalidade 4 — Cancelar reserva pelo código
- Funcionalidade 5 — Ver lista de restaurantes disponíveis com avaliação média
- Funcionalidade 6 — Avaliar restaurante com nota de 1 a 5 estrelas
- Funcionalidade 7 — Atribuição automática de mesa por disponibilidade
+[x] Funcionalidade 1 — Adicionar reserva com código único gerado automaticamente
+[x] Funcionalidade 2 — Listar todas as reservas existentes
+[x] Funcionalidade 3 — Pesquisar reserva por nome ou código
+[x] Funcionalidade 4 — Cancelar reserva pelo código
+[x] Funcionalidade 5 — Ver lista de restaurantes disponíveis com avaliação média
+[x] Funcionalidade 6 — Avaliar restaurante com nota de 1 a 5 estrelas
+[x] Funcionalidade 7 — Atribuição automática de mesa por disponibilidade
 
 > As checkboxes ficam marcadas (`[x]`) à medida que implementas cada funcionalidade.
 
