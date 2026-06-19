@@ -204,7 +204,7 @@ Análise e Planeamento    ✅ Concluído
 Desenvolvimento          ✅ Concluído
 Testes e Correções       ✅ Concluído
 Documentação             ✅ Concluído
-Apresentação             ⏳ Pendente
+Apresentação             ✅ Concluído
 ```
 
 ---
