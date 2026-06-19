@@ -58,22 +58,32 @@
 ```
 projeto-ufcd-10790/
 │
-├── README.md                   ← Este ficheiro — apresentação do projeto
-├── .gitignore                  ← Ficheiros a ignorar pelo Git
-├── reservas.json               ← Dados das reservas (gerado automaticamente)
+├── README.md                     ← Apresentação geral do projeto
+├── .gitignore                    ← Ficheiros e pastas ignorados pelo Git
 │
-├── src/                        ← Código fonte Python
-│   └── main.py                 ← Ponto de entrada da aplicação (ficheiro único)
+├── assets/                       ← Recursos visuais e ficheiros de apoio
+│   └── LEIA-ME.md                ← Descrição dos recursos da pasta
 │
-├── docs/                       ← Documentação do projeto
-│   ├── relatorio.pdf           ← Relatório final do projeto
-│   └── explicacao_codigo.docx  ← Explicação linha a linha do código
+├── docs/                         ← Documentação do projeto
+│   ├── Apresentação do projecto.pdf      ← Apresentação da ideia principal
+│   ├── Flávio Saldanha_cronograma.xlsx   ← Cronograma do projeto
+│   ├── LEIA-ME.md                        ← Documentação da pasta
+│   ├── P'a Comer.pptx                    ← Apresentação final
+│   ├── Relatório.pdf                     ← Relatório final do projeto
+│   └── Requisitos.xlsx                   ← Levantamento de requisitos
 │
-├── assets/                     ← Recursos visuais e apresentação
-│   ├── apresentacao.pptx       ← Apresentação final
-│   └── gantt.xlsx              ← Diagrama de Gantt do projeto
+├── sql/                          ← Scripts e documentação da base de dados
+│   └── LEIA-ME.md                ← Informação sobre a estrutura SQL
 │
-```
+├── src/                          ← Código-fonte da aplicação
+│   ├── LEIA-ME.md                ← Documentação técnica do código
+│   ├── README.md                 ← Guia de execução da aplicação
+│   └── main.py                   ← Ponto de entrada principal
+│
+├── tests/                        ← Testes do projeto
+│   └── LEIA-ME.md                ← Instruções e descrição dos testes
+│
+└── .gitattributes                ← Configurações de atributos do Git
 
 ---
 
